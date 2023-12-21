@@ -1,6 +1,25 @@
+import { useState } from "react";
+
 function ProductForm() {
+  const [nameInput,setNameInput] = useState("");
+  const [imageUrlInput,setImageUrlInput] = useState("");
+  const [priceInput,setPriceInput] = useState("");
+  const [descriptionInput,setDescriptionInput] = useState("");
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const obj = {
+      "name": nameInput,
+      "price": imageUrlInput, 
+      "image": priceInput, 
+      "description": descriptionInput,
+    }
+    const alertInput = JSON.stringify(obj);
+    alert(alertInput)
+  }
+
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={handleSubmit}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -10,7 +29,10 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            value={nameInput}
+            onChange={(event) => {
+              setNameInput(event.target.value)
+            }}
           />
         </label>
       </div>
@@ -22,7 +44,10 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            value={imageUrlInput}
+            onChange={(event) => {
+              setImageUrlInput(event.target.value)
+            }}
           />
         </label>
       </div>
@@ -34,7 +59,10 @@ function ProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            value={priceInput}
+            onChange={(event) => {
+              setPriceInput(event.target.value)
+            }}
           />
         </label>
       </div>
@@ -46,7 +74,10 @@ function ProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            value={descriptionInput}
+            onChange={(event) => {
+              setDescriptionInput(event.target.value)
+            }}
             rows={4}
             cols={30}
           />
